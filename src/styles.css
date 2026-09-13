@@ -160,3 +160,83 @@
 @utility paper-surface {
   background-color: var(--color-background);
 }
+
+@keyframes hero-enter {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes plan-sheet-enter {
+  from { opacity: 0; transform: translateY(18px) rotate(0.4deg); }
+  to { opacity: 1; transform: translateY(0) rotate(0); }
+}
+
+@keyframes plan-row-enter {
+  from { opacity: 0; transform: translateX(14px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes plan-progress {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+
+@keyframes active-row-pulse {
+  0%, 100% { background-color: transparent; }
+  50% { background-color: var(--color-accent); }
+}
+
+@keyframes next-action-track {
+  from { transform: translateX(0); }
+  50% { transform: translateX(6px); }
+  to { transform: translateX(0); }
+}
+
+.hero-enter {
+  animation: hero-enter 520ms ease-out both;
+}
+
+.hero-enter-1 { animation-delay: 40ms; }
+.hero-enter-2 { animation-delay: 110ms; }
+.hero-enter-3 { animation-delay: 180ms; }
+.hero-enter-4 { animation-delay: 250ms; }
+.hero-enter-5 { animation-delay: 320ms; }
+
+.plan-sheet {
+  animation: plan-sheet-enter 620ms ease-out 120ms both;
+}
+
+.plan-row {
+  animation: plan-row-enter 420ms ease-out both;
+}
+
+.plan-row:nth-of-type(2) { animation-delay: 300ms; }
+.plan-row:nth-of-type(3) { animation-delay: 380ms; }
+.plan-row:nth-of-type(4) { animation-delay: 460ms; }
+.plan-row:nth-of-type(5) { animation-delay: 540ms; }
+.plan-row:nth-of-type(6) { animation-delay: 620ms; }
+
+.plan-row-active {
+  animation: plan-row-enter 420ms ease-out 460ms both, active-row-pulse 2.4s ease-in-out 1.1s infinite;
+}
+
+.plan-progress {
+  transform-origin: left center;
+  animation: plan-progress 1.1s ease-out 500ms both;
+}
+
+.plan-next span {
+  display: inline-block;
+  animation: next-action-track 2.4s ease-in-out 1.2s infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-enter,
+  .plan-sheet,
+  .plan-row,
+  .plan-row-active,
+  .plan-progress,
+  .plan-next span {
+    animation: none;
+  }
+}
