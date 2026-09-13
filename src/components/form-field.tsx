@@ -1,7 +1,7 @@
 import type { InputHTMLAttributes } from "react";
 import { Input } from "./ui/input";
 
-export function FormField({ label, error, hint, ...props }: InputHTMLAttributes<HTMLInputElement> & { label: string; error?: string; hint?: string }) {
+export function FormField({ label, error, hint, ...props }: InputHTMLAttributes<HTMLInputElement> & { label: string; error?: string | undefined; hint?: string | undefined }) {
   const id = props.id ?? props.name;
   return (
     <div className="space-y-2">

@@ -20,20 +20,20 @@ export function RegisterPage() {
   function submit(event: FormEvent) {
     event.preventDefault();
     const next: Record<string, string> = {};
-    if (values.name.trim().length < 2) next.name = "Enter your full name.";
-    if (!/^\S+@\S+\.\S+$/.test(values.email)) next.email = "Enter a valid email address.";
-    if (values.password.length < 8) next.password = "Use at least 8 characters.";
-    if (values.password !== values.confirm) next.confirm = "Passwords do not match.";
+    if (values.name.trim().length < 2) next["name"] = "Enter your full name.";
+    if (!/^\S+@\S+\.\S+$/.test(values.email)) next["email"] = "Enter a valid email address.";
+    if (values.password.length < 8) next["password"] = "Use at least 8 characters.";
+    if (values.password !== values.confirm) next["confirm"] = "Passwords do not match.";
     setErrors(next);
     if (!Object.keys(next).length) setSent(true);
   }
   if (sent) return <AuthFrame index="ACCOUNT / CONFIRM" title="Confirm your email" summary="We sent a confirmation link to your email address. Open it before you log in." aside={<BuildStamp label="EMAIL PENDING" />}><div className="border-l-4 border-primary bg-card p-5"><p className="font-semibold">Your account request is recorded.</p><p className="mt-2 text-sm text-muted-foreground">This frontend preview does not send an actual email.</p></div><Button asChild variant="outline" className="mt-6 w-full"><Link to="/login">Return to log in</Link></Button></AuthFrame>;
   return <AuthFrame index="ACCOUNT / NEW" title="Create your account and start your first project" summary="One account holds your project briefs, build activity, credits, and deliveries." aside={<BuildStamp label="PROJECT 001" />}>
     <form onSubmit={submit} className="space-y-5" noValidate>
-      <FormField label="Full name" name="name" autoComplete="name" value={values.name} error={errors.name} onChange={(e) => setValues({...values, name:e.target.value})} />
-      <FormField label="Email" name="email" type="email" autoComplete="email" value={values.email} error={errors.email} onChange={(e) => setValues({...values, email:e.target.value})} />
-      <FormField label="Password" name="password" type="password" autoComplete="new-password" value={values.password} error={errors.password} hint="8 characters minimum" onChange={(e) => setValues({...values, password:e.target.value})} />
-      <FormField label="Confirm password" name="confirm" type="password" autoComplete="new-password" value={values.confirm} error={errors.confirm} hint="Must match your password" onChange={(e) => setValues({...values, confirm:e.target.value})} />
+      <FormField label="Full name" name="name" autoComplete="name" value={values.name} error={errors["name"]} onChange={(e) => setValues({...values, name:e.target.value})} />
+      <FormField label="Email" name="email" type="email" autoComplete="email" value={values.email} error={errors["email"]} onChange={(e) => setValues({...values, email:e.target.value})} />
+      <FormField label="Password" name="password" type="password" autoComplete="new-password" value={values.password} error={errors["password"]} hint="8 characters minimum" onChange={(e) => setValues({...values, password:e.target.value})} />
+      <FormField label="Confirm password" name="confirm" type="password" autoComplete="new-password" value={values.confirm} error={errors["confirm"]} hint="Must match your password" onChange={(e) => setValues({...values, confirm:e.target.value})} />
       <Button type="submit" className="w-full">Create my account <ArrowRight /></Button>
       <p className="text-sm text-muted-foreground">Already registered? <Link to="/login" className="font-semibold text-foreground underline">Log in</Link></p>
     </form>
