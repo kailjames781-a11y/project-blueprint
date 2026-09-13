@@ -1,24 +1,9 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { ArrowRight, Check, Circle, Clock3 } from "lucide-react";
+import { SiteHeader } from "@/components/site-header";
+import { Button } from "@/components/ui/button";
+import { pageMeta } from "@/lib/meta";
 
-// No head() here: the home route inherits title/description/og/twitter from
-// __root.tsx, and ships no og:image so serve-time hosting can inject the
-// project's social preview (explicit og:image or latest screenshot).
-export const Route = createFileRoute("/")({
-  component: Index,
-});
-
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
-function Index() {
-  return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
-    </div>
-  );
-}
+export const Route = createFileRoute("/")({ head:()=>pageMeta("AI agents that deliver working software","Describe your idea. Zeruvo plans, builds, tests, and delivers a working GitHub repository."), component: Index });
+const stages=[{n:"01",title:"Plan",copy:"Your idea becomes a phased implementation document with explicit decisions and acceptance criteria."},{n:"02",title:"Build",copy:"Specialized agents write the application against the approved sequence, not an improvised prompt."},{n:"03",title:"Test",copy:"Every stage closes with checks that expose regressions before they become delivery problems."},{n:"04",title:"Deliver",copy:"Receive a working repository with its history, documentation, and a clear handoff record."}];
+function Index(){return <div className="min-h-screen bg-background"><SiteHeader/><main><section className="border-b border-foreground"><div className="mx-auto grid max-w-7xl lg:grid-cols-[0.82fr_1.18fr]"><div className="flex flex-col justify-center px-5 py-16 lg:border-r lg:border-foreground lg:px-8 lg:py-20"><p className="font-mono text-xs uppercase text-primary">SOFTWARE DELIVERY / CONTROLLED</p><h1 className="mt-7 text-5xl font-bold leading-[0.98] sm:text-6xl lg:text-7xl">Your idea,<br/>built as a working system.</h1><p className="mt-7 max-w-xl text-lg leading-8 text-muted-foreground">Describe the software in your own words. Zeruvo’s agents turn it into a plan, write the code, test each stage, and deliver a working GitHub repository.</p><div className="mt-9 flex flex-wrap gap-3"><Button asChild size="lg"><Link to="/register">Start my first project <ArrowRight/></Link></Button><Button asChild size="lg" variant="outline"><Link to="/login">Log in</Link></Button></div></div><div className="bg-secondary p-5 sm:p-10 lg:p-12"><div className="border-2 border-foreground bg-card"><div className="flex items-center justify-between border-b-2 border-foreground p-4 font-mono text-xs"><span>IMPLEMENTATION PLAN</span><span>BUILD / 0241</span></div><div className="p-5 sm:p-7"><div className="mb-8 flex items-end justify-between gap-4"><div><p className="font-mono text-xs text-muted-foreground">CURRENT PROJECT</p><h2 className="mt-2 text-2xl font-bold">Customer support workspace</h2></div><span className="border border-foreground px-2 py-1 font-mono text-xs">64%</span></div>{[[Check,"done","Define data model"],[Check,"done","Build authentication flow"],[Clock3,"active","Implement shared inbox"],[Circle,"queued","Run integration tests"],[Circle,"queued","Prepare repository handoff"]].map(([Icon,status,label],i)=>{const I=Icon as typeof Check;return <div key={String(label)} className="grid grid-cols-[28px_70px_1fr] items-center gap-3 border-t border-border py-4"><I className={`size-4 ${status==="active"?"text-primary":"text-muted-foreground"}`}/><span className="font-mono text-[11px] uppercase">{String(status)}</span><span className="text-sm font-medium">{String(label)}</span></div>})}</div><div className="border-t-2 border-foreground bg-foreground p-4 font-mono text-xs text-background">NEXT ACTION: COMPLETE SHARED INBOX FILTERS</div></div></div></div></section><section className="border-b border-foreground"><div className="mx-auto max-w-7xl px-5 py-20 lg:px-8"><div className="grid gap-6 lg:grid-cols-[0.6fr_1.4fr]"><div><p className="font-mono text-xs text-primary">METHOD / 04 STAGES</p><h2 className="mt-5 text-4xl font-bold">A build process you can inspect.</h2></div><div>{stages.map(s=><article key={s.n} className="grid gap-3 border-t border-foreground py-7 sm:grid-cols-[70px_180px_1fr]"><span className="font-mono text-sm text-primary">{s.n}</span><h3 className="text-2xl font-bold">{s.title}</h3><p className="leading-7 text-muted-foreground">{s.copy}</p></article>)}</div></div></div></section><section className="border-b border-foreground bg-foreground text-background"><div className="mx-auto grid max-w-7xl gap-10 px-5 py-16 lg:grid-cols-2 lg:px-8"><div><p className="font-mono text-xs">PRICING / ONE RATE</p><h2 className="mt-5 text-4xl font-bold">Credits without package arithmetic.</h2><p className="mt-5 max-w-md leading-7 text-background/70">Buy what the project needs. Your plan shows the estimated credit use before the build begins.</p></div><div className="flex items-end justify-between border-y border-background py-8"><div><span className="font-display text-6xl font-bold">$10</span><span className="ml-2 text-background/70">per 100 credits</span></div><Button asChild className="bg-background text-foreground hover:bg-primary hover:text-primary-foreground"><Link to="/register">Create account</Link></Button></div></div></section></main><footer className="mx-auto flex max-w-7xl flex-col gap-4 px-5 py-8 text-sm text-muted-foreground sm:flex-row sm:items-center sm:justify-between lg:px-8"><span>ZERUVO / SOFTWARE BUILT WITH A RECORD</span><span>© 2026 Zeruvo</span></footer></div>}

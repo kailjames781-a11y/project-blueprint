@@ -1,0 +1,2 @@
+import { createFileRoute } from "@tanstack/react-router"; import { WorkspacePage } from "@/components/workspace-shell"; import { pageMeta } from "@/lib/meta";
+export const Route=createFileRoute("/dashboard/profile")({head:()=>pageMeta("Profile","Manage your Zeruvo profile."),component:()=> <WorkspacePage title="Profile" section="01"/>});

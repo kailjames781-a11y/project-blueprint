@@ -1,0 +1,2 @@
+import { createFileRoute } from "@tanstack/react-router"; import { WorkspacePage } from "@/components/workspace-shell"; import { pageMeta } from "@/lib/meta";
+export const Route=createFileRoute("/admin/notifications")({head:()=>pageMeta("Notification administration","Manage system notifications."),component:()=> <WorkspacePage title="Notifications" section="A08" admin/>});

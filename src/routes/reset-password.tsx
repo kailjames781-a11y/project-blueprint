@@ -1,0 +1,2 @@
+import { createFileRoute } from "@tanstack/react-router"; import { ResetPasswordPage } from "@/components/auth-pages"; import { pageMeta } from "@/lib/meta";
+export const Route=createFileRoute("/reset-password")({head:()=>pageMeta("Set a new password","Verify your reset link and choose a new Zeruvo password."),component:ResetPasswordPage});

@@ -1,0 +1,2 @@
+import { createFileRoute } from "@tanstack/react-router"; import { WorkspacePage } from "@/components/workspace-shell"; import { pageMeta } from "@/lib/meta";
+export const Route=createFileRoute("/dashboard/download")({head:()=>pageMeta("Desktop app","Download the future Zeruvo desktop application."),component:()=> <WorkspacePage title="Desktop app" section="06"/>});

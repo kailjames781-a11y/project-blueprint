@@ -1,0 +1,2 @@
+import { createFileRoute } from "@tanstack/react-router"; import { WorkspacePage } from "@/components/workspace-shell"; import { pageMeta } from "@/lib/meta";
+export const Route=createFileRoute("/admin/connectors")({head:()=>pageMeta("Connectors","Manage platform connectors."),component:()=> <WorkspacePage title="Connectors" section="A07" admin/>});

@@ -1,0 +1,2 @@
+import { createFileRoute } from "@tanstack/react-router"; import { WorkspacePage } from "@/components/workspace-shell"; import { pageMeta } from "@/lib/meta";
+export const Route=createFileRoute("/admin/payments")({head:()=>pageMeta("Payment administration","Review platform payments."),component:()=> <WorkspacePage title="Payments" section="A03" admin/>});
