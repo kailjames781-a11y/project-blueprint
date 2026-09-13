@@ -10,33 +10,199 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as DashboardRouteImport } from './routes/dashboard'
+import { Route as ForgotPasswordRouteImport } from './routes/forgot-password'
+import { Route as LoginRouteImport } from './routes/login'
+import { Route as RegisterRouteImport } from './routes/register'
+import { Route as ResetPasswordRouteImport } from './routes/reset-password'
+import { Route as AdminLoginRouteImport } from './routes/admin.login'
+import { Route as DashboardConnectionsRouteImport } from './routes/dashboard.connections'
+import { Route as DashboardCreditsRouteImport } from './routes/dashboard.credits'
+import { Route as DashboardDownloadRouteImport } from './routes/dashboard.download'
+import { Route as DashboardNotificationsRouteImport } from './routes/dashboard.notifications'
+import { Route as DashboardPaymentsRouteImport } from './routes/dashboard.payments'
+import { Route as DashboardProfileRouteImport } from './routes/dashboard.profile'
+import { Route as DashboardSubscriptionRouteImport } from './routes/dashboard.subscription'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const DashboardRoute = DashboardRouteImport.update({
+  id: '/dashboard',
+  path: '/dashboard',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ForgotPasswordRoute = ForgotPasswordRouteImport.update({
+  id: '/forgot-password',
+  path: '/forgot-password',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LoginRoute = LoginRouteImport.update({
+  id: '/login',
+  path: '/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RegisterRoute = RegisterRouteImport.update({
+  id: '/register',
+  path: '/register',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ResetPasswordRoute = ResetPasswordRouteImport.update({
+  id: '/reset-password',
+  path: '/reset-password',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminLoginRoute = AdminLoginRouteImport.update({
+  id: '/admin/login',
+  path: '/admin/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DashboardConnectionsRoute = DashboardConnectionsRouteImport.update({
+  id: '/connections',
+  path: '/connections',
+  getParentRoute: () => DashboardRoute,
+} as any)
+const DashboardCreditsRoute = DashboardCreditsRouteImport.update({
+  id: '/credits',
+  path: '/credits',
+  getParentRoute: () => DashboardRoute,
+} as any)
+const DashboardDownloadRoute = DashboardDownloadRouteImport.update({
+  id: '/download',
+  path: '/download',
+  getParentRoute: () => DashboardRoute,
+} as any)
+const DashboardNotificationsRoute = DashboardNotificationsRouteImport.update({
+  id: '/notifications',
+  path: '/notifications',
+  getParentRoute: () => DashboardRoute,
+} as any)
+const DashboardPaymentsRoute = DashboardPaymentsRouteImport.update({
+  id: '/payments',
+  path: '/payments',
+  getParentRoute: () => DashboardRoute,
+} as any)
+const DashboardProfileRoute = DashboardProfileRouteImport.update({
+  id: '/profile',
+  path: '/profile',
+  getParentRoute: () => DashboardRoute,
+} as any)
+const DashboardSubscriptionRoute = DashboardSubscriptionRouteImport.update({
+  id: '/subscription',
+  path: '/subscription',
+  getParentRoute: () => DashboardRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/dashboard': typeof DashboardRouteWithChildren
+  '/forgot-password': typeof ForgotPasswordRoute
+  '/login': typeof LoginRoute
+  '/register': typeof RegisterRoute
+  '/reset-password': typeof ResetPasswordRoute
+  '/admin/login': typeof AdminLoginRoute
+  '/dashboard/connections': typeof DashboardConnectionsRoute
+  '/dashboard/credits': typeof DashboardCreditsRoute
+  '/dashboard/download': typeof DashboardDownloadRoute
+  '/dashboard/notifications': typeof DashboardNotificationsRoute
+  '/dashboard/payments': typeof DashboardPaymentsRoute
+  '/dashboard/profile': typeof DashboardProfileRoute
+  '/dashboard/subscription': typeof DashboardSubscriptionRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/dashboard': typeof DashboardRouteWithChildren
+  '/forgot-password': typeof ForgotPasswordRoute
+  '/login': typeof LoginRoute
+  '/register': typeof RegisterRoute
+  '/reset-password': typeof ResetPasswordRoute
+  '/admin/login': typeof AdminLoginRoute
+  '/dashboard/connections': typeof DashboardConnectionsRoute
+  '/dashboard/credits': typeof DashboardCreditsRoute
+  '/dashboard/download': typeof DashboardDownloadRoute
+  '/dashboard/notifications': typeof DashboardNotificationsRoute
+  '/dashboard/payments': typeof DashboardPaymentsRoute
+  '/dashboard/profile': typeof DashboardProfileRoute
+  '/dashboard/subscription': typeof DashboardSubscriptionRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/dashboard': typeof DashboardRouteWithChildren
+  '/forgot-password': typeof ForgotPasswordRoute
+  '/login': typeof LoginRoute
+  '/register': typeof RegisterRoute
+  '/reset-password': typeof ResetPasswordRoute
+  '/admin/login': typeof AdminLoginRoute
+  '/dashboard/connections': typeof DashboardConnectionsRoute
+  '/dashboard/credits': typeof DashboardCreditsRoute
+  '/dashboard/download': typeof DashboardDownloadRoute
+  '/dashboard/notifications': typeof DashboardNotificationsRoute
+  '/dashboard/payments': typeof DashboardPaymentsRoute
+  '/dashboard/profile': typeof DashboardProfileRoute
+  '/dashboard/subscription': typeof DashboardSubscriptionRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/dashboard'
+    | '/forgot-password'
+    | '/login'
+    | '/register'
+    | '/reset-password'
+    | '/admin/login'
+    | '/dashboard/connections'
+    | '/dashboard/credits'
+    | '/dashboard/download'
+    | '/dashboard/notifications'
+    | '/dashboard/payments'
+    | '/dashboard/profile'
+    | '/dashboard/subscription'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/dashboard'
+    | '/forgot-password'
+    | '/login'
+    | '/register'
+    | '/reset-password'
+    | '/admin/login'
+    | '/dashboard/connections'
+    | '/dashboard/credits'
+    | '/dashboard/download'
+    | '/dashboard/notifications'
+    | '/dashboard/payments'
+    | '/dashboard/profile'
+    | '/dashboard/subscription'
+  id:
+    | '__root__'
+    | '/'
+    | '/dashboard'
+    | '/forgot-password'
+    | '/login'
+    | '/register'
+    | '/reset-password'
+    | '/admin/login'
+    | '/dashboard/connections'
+    | '/dashboard/credits'
+    | '/dashboard/download'
+    | '/dashboard/notifications'
+    | '/dashboard/payments'
+    | '/dashboard/profile'
+    | '/dashboard/subscription'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  DashboardRoute: typeof DashboardRouteWithChildren
+  ForgotPasswordRoute: typeof ForgotPasswordRoute
+  LoginRoute: typeof LoginRoute
+  RegisterRoute: typeof RegisterRoute
+  ResetPasswordRoute: typeof ResetPasswordRoute
+  AdminLoginRoute: typeof AdminLoginRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +214,132 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/dashboard': {
+      id: '/dashboard'
+      path: '/dashboard'
+      fullPath: '/dashboard'
+      preLoaderRoute: typeof DashboardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/forgot-password': {
+      id: '/forgot-password'
+      path: '/forgot-password'
+      fullPath: '/forgot-password'
+      preLoaderRoute: typeof ForgotPasswordRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/login': {
+      id: '/login'
+      path: '/login'
+      fullPath: '/login'
+      preLoaderRoute: typeof LoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/register': {
+      id: '/register'
+      path: '/register'
+      fullPath: '/register'
+      preLoaderRoute: typeof RegisterRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/reset-password': {
+      id: '/reset-password'
+      path: '/reset-password'
+      fullPath: '/reset-password'
+      preLoaderRoute: typeof ResetPasswordRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/login': {
+      id: '/admin/login'
+      path: '/admin/login'
+      fullPath: '/admin/login'
+      preLoaderRoute: typeof AdminLoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/dashboard/connections': {
+      id: '/dashboard/connections'
+      path: '/connections'
+      fullPath: '/dashboard/connections'
+      preLoaderRoute: typeof DashboardConnectionsRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/dashboard/credits': {
+      id: '/dashboard/credits'
+      path: '/credits'
+      fullPath: '/dashboard/credits'
+      preLoaderRoute: typeof DashboardCreditsRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/dashboard/download': {
+      id: '/dashboard/download'
+      path: '/download'
+      fullPath: '/dashboard/download'
+      preLoaderRoute: typeof DashboardDownloadRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/dashboard/notifications': {
+      id: '/dashboard/notifications'
+      path: '/notifications'
+      fullPath: '/dashboard/notifications'
+      preLoaderRoute: typeof DashboardNotificationsRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/dashboard/payments': {
+      id: '/dashboard/payments'
+      path: '/payments'
+      fullPath: '/dashboard/payments'
+      preLoaderRoute: typeof DashboardPaymentsRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/dashboard/profile': {
+      id: '/dashboard/profile'
+      path: '/profile'
+      fullPath: '/dashboard/profile'
+      preLoaderRoute: typeof DashboardProfileRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/dashboard/subscription': {
+      id: '/dashboard/subscription'
+      path: '/subscription'
+      fullPath: '/dashboard/subscription'
+      preLoaderRoute: typeof DashboardSubscriptionRouteImport
+      parentRoute: typeof DashboardRoute
+    }
   }
 }
 
+interface DashboardRouteChildren {
+  DashboardConnectionsRoute: typeof DashboardConnectionsRoute
+  DashboardCreditsRoute: typeof DashboardCreditsRoute
+  DashboardDownloadRoute: typeof DashboardDownloadRoute
+  DashboardNotificationsRoute: typeof DashboardNotificationsRoute
+  DashboardPaymentsRoute: typeof DashboardPaymentsRoute
+  DashboardProfileRoute: typeof DashboardProfileRoute
+  DashboardSubscriptionRoute: typeof DashboardSubscriptionRoute
+}
+
+const DashboardRouteChildren: DashboardRouteChildren = {
+  DashboardConnectionsRoute: DashboardConnectionsRoute,
+  DashboardCreditsRoute: DashboardCreditsRoute,
+  DashboardDownloadRoute: DashboardDownloadRoute,
+  DashboardNotificationsRoute: DashboardNotificationsRoute,
+  DashboardPaymentsRoute: DashboardPaymentsRoute,
+  DashboardProfileRoute: DashboardProfileRoute,
+  DashboardSubscriptionRoute: DashboardSubscriptionRoute,
+}
+
+const DashboardRouteWithChildren = DashboardRoute._addFileChildren(
+  DashboardRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  DashboardRoute: DashboardRouteWithChildren,
+  ForgotPasswordRoute: ForgotPasswordRoute,
+  LoginRoute: LoginRoute,
+  RegisterRoute: RegisterRoute,
+  ResetPasswordRoute: ResetPasswordRoute,
+  AdminLoginRoute: AdminLoginRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

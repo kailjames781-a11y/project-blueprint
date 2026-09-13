@@ -1,0 +1,2 @@
+import { createFileRoute } from "@tanstack/react-router"; import { WorkspacePage } from "@/components/workspace-shell"; import { pageMeta } from "@/lib/meta";
+export const Route=createFileRoute("/admin/pricing")({head:()=>pageMeta("Pricing administration","Manage Zeruvo credit pricing."),component:()=> <WorkspacePage title="Pricing" section="A04" admin/>});
