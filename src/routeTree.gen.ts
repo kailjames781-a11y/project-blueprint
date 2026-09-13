@@ -10,12 +10,23 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AdminRouteImport } from './routes/admin'
 import { Route as DashboardRouteImport } from './routes/dashboard'
 import { Route as ForgotPasswordRouteImport } from './routes/forgot-password'
 import { Route as LoginRouteImport } from './routes/login'
 import { Route as RegisterRouteImport } from './routes/register'
 import { Route as ResetPasswordRouteImport } from './routes/reset-password'
+import { Route as AdminIndexRouteImport } from './routes/admin.index'
+import { Route as AdminConnectorsRouteImport } from './routes/admin.connectors'
+import { Route as AdminCouponsRouteImport } from './routes/admin.coupons'
 import { Route as AdminLoginRouteImport } from './routes/admin.login'
+import { Route as AdminNotificationsRouteImport } from './routes/admin.notifications'
+import { Route as AdminPaymentsRouteImport } from './routes/admin.payments'
+import { Route as AdminPlansRouteImport } from './routes/admin.plans'
+import { Route as AdminPricingRouteImport } from './routes/admin.pricing'
+import { Route as AdminProvidersRouteImport } from './routes/admin.providers'
+import { Route as AdminRolesRouteImport } from './routes/admin.roles'
+import { Route as AdminUsersRouteImport } from './routes/admin.users'
 import { Route as DashboardConnectionsRouteImport } from './routes/dashboard.connections'
 import { Route as DashboardCreditsRouteImport } from './routes/dashboard.credits'
 import { Route as DashboardDownloadRouteImport } from './routes/dashboard.download'
@@ -27,6 +38,11 @@ import { Route as DashboardSubscriptionRouteImport } from './routes/dashboard.su
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminRoute = AdminRouteImport.update({
+  id: '/admin',
+  path: '/admin',
   getParentRoute: () => rootRouteImport,
 } as any)
 const DashboardRoute = DashboardRouteImport.update({
@@ -54,10 +70,60 @@ const ResetPasswordRoute = ResetPasswordRouteImport.update({
   path: '/reset-password',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AdminIndexRoute = AdminIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminConnectorsRoute = AdminConnectorsRouteImport.update({
+  id: '/connectors',
+  path: '/connectors',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminCouponsRoute = AdminCouponsRouteImport.update({
+  id: '/coupons',
+  path: '/coupons',
+  getParentRoute: () => AdminRoute,
+} as any)
 const AdminLoginRoute = AdminLoginRouteImport.update({
-  id: '/admin/login',
-  path: '/admin/login',
-  getParentRoute: () => rootRouteImport,
+  id: '/login',
+  path: '/login',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminNotificationsRoute = AdminNotificationsRouteImport.update({
+  id: '/notifications',
+  path: '/notifications',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminPaymentsRoute = AdminPaymentsRouteImport.update({
+  id: '/payments',
+  path: '/payments',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminPlansRoute = AdminPlansRouteImport.update({
+  id: '/plans',
+  path: '/plans',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminPricingRoute = AdminPricingRouteImport.update({
+  id: '/pricing',
+  path: '/pricing',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminProvidersRoute = AdminProvidersRouteImport.update({
+  id: '/providers',
+  path: '/providers',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminRolesRoute = AdminRolesRouteImport.update({
+  id: '/roles',
+  path: '/roles',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminUsersRoute = AdminUsersRouteImport.update({
+  id: '/users',
+  path: '/users',
+  getParentRoute: () => AdminRoute,
 } as any)
 const DashboardConnectionsRoute = DashboardConnectionsRouteImport.update({
   id: '/connections',
@@ -97,12 +163,22 @@ const DashboardSubscriptionRoute = DashboardSubscriptionRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/admin': typeof AdminRouteWithChildren
   '/dashboard': typeof DashboardRouteWithChildren
   '/forgot-password': typeof ForgotPasswordRoute
   '/login': typeof LoginRoute
   '/register': typeof RegisterRoute
   '/reset-password': typeof ResetPasswordRoute
+  '/admin/connectors': typeof AdminConnectorsRoute
+  '/admin/coupons': typeof AdminCouponsRoute
   '/admin/login': typeof AdminLoginRoute
+  '/admin/notifications': typeof AdminNotificationsRoute
+  '/admin/payments': typeof AdminPaymentsRoute
+  '/admin/plans': typeof AdminPlansRoute
+  '/admin/pricing': typeof AdminPricingRoute
+  '/admin/providers': typeof AdminProvidersRoute
+  '/admin/roles': typeof AdminRolesRoute
+  '/admin/users': typeof AdminUsersRoute
   '/dashboard/connections': typeof DashboardConnectionsRoute
   '/dashboard/credits': typeof DashboardCreditsRoute
   '/dashboard/download': typeof DashboardDownloadRoute
@@ -110,6 +186,7 @@ export interface FileRoutesByFullPath {
   '/dashboard/payments': typeof DashboardPaymentsRoute
   '/dashboard/profile': typeof DashboardProfileRoute
   '/dashboard/subscription': typeof DashboardSubscriptionRoute
+  '/admin/': typeof AdminIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -118,7 +195,16 @@ export interface FileRoutesByTo {
   '/login': typeof LoginRoute
   '/register': typeof RegisterRoute
   '/reset-password': typeof ResetPasswordRoute
+  '/admin/connectors': typeof AdminConnectorsRoute
+  '/admin/coupons': typeof AdminCouponsRoute
   '/admin/login': typeof AdminLoginRoute
+  '/admin/notifications': typeof AdminNotificationsRoute
+  '/admin/payments': typeof AdminPaymentsRoute
+  '/admin/plans': typeof AdminPlansRoute
+  '/admin/pricing': typeof AdminPricingRoute
+  '/admin/providers': typeof AdminProvidersRoute
+  '/admin/roles': typeof AdminRolesRoute
+  '/admin/users': typeof AdminUsersRoute
   '/dashboard/connections': typeof DashboardConnectionsRoute
   '/dashboard/credits': typeof DashboardCreditsRoute
   '/dashboard/download': typeof DashboardDownloadRoute
@@ -126,16 +212,27 @@ export interface FileRoutesByTo {
   '/dashboard/payments': typeof DashboardPaymentsRoute
   '/dashboard/profile': typeof DashboardProfileRoute
   '/dashboard/subscription': typeof DashboardSubscriptionRoute
+  '/admin': typeof AdminIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/admin': typeof AdminRouteWithChildren
   '/dashboard': typeof DashboardRouteWithChildren
   '/forgot-password': typeof ForgotPasswordRoute
   '/login': typeof LoginRoute
   '/register': typeof RegisterRoute
   '/reset-password': typeof ResetPasswordRoute
+  '/admin/connectors': typeof AdminConnectorsRoute
+  '/admin/coupons': typeof AdminCouponsRoute
   '/admin/login': typeof AdminLoginRoute
+  '/admin/notifications': typeof AdminNotificationsRoute
+  '/admin/payments': typeof AdminPaymentsRoute
+  '/admin/plans': typeof AdminPlansRoute
+  '/admin/pricing': typeof AdminPricingRoute
+  '/admin/providers': typeof AdminProvidersRoute
+  '/admin/roles': typeof AdminRolesRoute
+  '/admin/users': typeof AdminUsersRoute
   '/dashboard/connections': typeof DashboardConnectionsRoute
   '/dashboard/credits': typeof DashboardCreditsRoute
   '/dashboard/download': typeof DashboardDownloadRoute
@@ -143,17 +240,28 @@ export interface FileRoutesById {
   '/dashboard/payments': typeof DashboardPaymentsRoute
   '/dashboard/profile': typeof DashboardProfileRoute
   '/dashboard/subscription': typeof DashboardSubscriptionRoute
+  '/admin/': typeof AdminIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/admin'
     | '/dashboard'
     | '/forgot-password'
     | '/login'
     | '/register'
     | '/reset-password'
+    | '/admin/connectors'
+    | '/admin/coupons'
     | '/admin/login'
+    | '/admin/notifications'
+    | '/admin/payments'
+    | '/admin/plans'
+    | '/admin/pricing'
+    | '/admin/providers'
+    | '/admin/roles'
+    | '/admin/users'
     | '/dashboard/connections'
     | '/dashboard/credits'
     | '/dashboard/download'
@@ -161,6 +269,7 @@ export interface FileRouteTypes {
     | '/dashboard/payments'
     | '/dashboard/profile'
     | '/dashboard/subscription'
+    | '/admin/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -169,7 +278,16 @@ export interface FileRouteTypes {
     | '/login'
     | '/register'
     | '/reset-password'
+    | '/admin/connectors'
+    | '/admin/coupons'
     | '/admin/login'
+    | '/admin/notifications'
+    | '/admin/payments'
+    | '/admin/plans'
+    | '/admin/pricing'
+    | '/admin/providers'
+    | '/admin/roles'
+    | '/admin/users'
     | '/dashboard/connections'
     | '/dashboard/credits'
     | '/dashboard/download'
@@ -177,15 +295,26 @@ export interface FileRouteTypes {
     | '/dashboard/payments'
     | '/dashboard/profile'
     | '/dashboard/subscription'
+    | '/admin'
   id:
     | '__root__'
     | '/'
+    | '/admin'
     | '/dashboard'
     | '/forgot-password'
     | '/login'
     | '/register'
     | '/reset-password'
+    | '/admin/connectors'
+    | '/admin/coupons'
     | '/admin/login'
+    | '/admin/notifications'
+    | '/admin/payments'
+    | '/admin/plans'
+    | '/admin/pricing'
+    | '/admin/providers'
+    | '/admin/roles'
+    | '/admin/users'
     | '/dashboard/connections'
     | '/dashboard/credits'
     | '/dashboard/download'
@@ -193,16 +322,17 @@ export interface FileRouteTypes {
     | '/dashboard/payments'
     | '/dashboard/profile'
     | '/dashboard/subscription'
+    | '/admin/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AdminRoute: typeof AdminRouteWithChildren
   DashboardRoute: typeof DashboardRouteWithChildren
   ForgotPasswordRoute: typeof ForgotPasswordRoute
   LoginRoute: typeof LoginRoute
   RegisterRoute: typeof RegisterRoute
   ResetPasswordRoute: typeof ResetPasswordRoute
-  AdminLoginRoute: typeof AdminLoginRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -212,6 +342,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin': {
+      id: '/admin'
+      path: '/admin'
+      fullPath: '/admin'
+      preLoaderRoute: typeof AdminRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/dashboard': {
@@ -249,12 +386,82 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ResetPasswordRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/admin/': {
+      id: '/admin/'
+      path: '/'
+      fullPath: '/admin/'
+      preLoaderRoute: typeof AdminIndexRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/connectors': {
+      id: '/admin/connectors'
+      path: '/connectors'
+      fullPath: '/admin/connectors'
+      preLoaderRoute: typeof AdminConnectorsRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/coupons': {
+      id: '/admin/coupons'
+      path: '/coupons'
+      fullPath: '/admin/coupons'
+      preLoaderRoute: typeof AdminCouponsRouteImport
+      parentRoute: typeof AdminRoute
+    }
     '/admin/login': {
       id: '/admin/login'
-      path: '/admin/login'
+      path: '/login'
       fullPath: '/admin/login'
       preLoaderRoute: typeof AdminLoginRouteImport
-      parentRoute: typeof rootRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/notifications': {
+      id: '/admin/notifications'
+      path: '/notifications'
+      fullPath: '/admin/notifications'
+      preLoaderRoute: typeof AdminNotificationsRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/payments': {
+      id: '/admin/payments'
+      path: '/payments'
+      fullPath: '/admin/payments'
+      preLoaderRoute: typeof AdminPaymentsRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/plans': {
+      id: '/admin/plans'
+      path: '/plans'
+      fullPath: '/admin/plans'
+      preLoaderRoute: typeof AdminPlansRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/pricing': {
+      id: '/admin/pricing'
+      path: '/pricing'
+      fullPath: '/admin/pricing'
+      preLoaderRoute: typeof AdminPricingRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/providers': {
+      id: '/admin/providers'
+      path: '/providers'
+      fullPath: '/admin/providers'
+      preLoaderRoute: typeof AdminProvidersRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/roles': {
+      id: '/admin/roles'
+      path: '/roles'
+      fullPath: '/admin/roles'
+      preLoaderRoute: typeof AdminRolesRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/users': {
+      id: '/admin/users'
+      path: '/users'
+      fullPath: '/admin/users'
+      preLoaderRoute: typeof AdminUsersRouteImport
+      parentRoute: typeof AdminRoute
     }
     '/dashboard/connections': {
       id: '/dashboard/connections'
@@ -308,6 +515,36 @@ declare module '@tanstack/react-router' {
   }
 }
 
+interface AdminRouteChildren {
+  AdminConnectorsRoute: typeof AdminConnectorsRoute
+  AdminCouponsRoute: typeof AdminCouponsRoute
+  AdminLoginRoute: typeof AdminLoginRoute
+  AdminNotificationsRoute: typeof AdminNotificationsRoute
+  AdminPaymentsRoute: typeof AdminPaymentsRoute
+  AdminPlansRoute: typeof AdminPlansRoute
+  AdminPricingRoute: typeof AdminPricingRoute
+  AdminProvidersRoute: typeof AdminProvidersRoute
+  AdminRolesRoute: typeof AdminRolesRoute
+  AdminUsersRoute: typeof AdminUsersRoute
+  AdminIndexRoute: typeof AdminIndexRoute
+}
+
+const AdminRouteChildren: AdminRouteChildren = {
+  AdminConnectorsRoute: AdminConnectorsRoute,
+  AdminCouponsRoute: AdminCouponsRoute,
+  AdminLoginRoute: AdminLoginRoute,
+  AdminNotificationsRoute: AdminNotificationsRoute,
+  AdminPaymentsRoute: AdminPaymentsRoute,
+  AdminPlansRoute: AdminPlansRoute,
+  AdminPricingRoute: AdminPricingRoute,
+  AdminProvidersRoute: AdminProvidersRoute,
+  AdminRolesRoute: AdminRolesRoute,
+  AdminUsersRoute: AdminUsersRoute,
+  AdminIndexRoute: AdminIndexRoute,
+}
+
+const AdminRouteWithChildren = AdminRoute._addFileChildren(AdminRouteChildren)
+
 interface DashboardRouteChildren {
   DashboardConnectionsRoute: typeof DashboardConnectionsRoute
   DashboardCreditsRoute: typeof DashboardCreditsRoute
@@ -334,12 +571,12 @@ const DashboardRouteWithChildren = DashboardRoute._addFileChildren(
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AdminRoute: AdminRouteWithChildren,
   DashboardRoute: DashboardRouteWithChildren,
   ForgotPasswordRoute: ForgotPasswordRoute,
   LoginRoute: LoginRoute,
   RegisterRoute: RegisterRoute,
   ResetPasswordRoute: ResetPasswordRoute,
-  AdminLoginRoute: AdminLoginRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
