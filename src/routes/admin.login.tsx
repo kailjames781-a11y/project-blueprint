@@ -1,0 +1,2 @@
+import { createFileRoute } from "@tanstack/react-router"; import { AdminLoginPage } from "@/components/auth-pages"; import { pageMeta } from "@/lib/meta";
+export const Route=createFileRoute("/admin/login")({head:()=>pageMeta("Administrative access","Restricted administrative access to Zeruvo controls."),component:AdminLoginPage});

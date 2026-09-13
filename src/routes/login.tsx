@@ -1,0 +1,2 @@
+import { createFileRoute } from "@tanstack/react-router"; import { LoginPage } from "@/components/auth-pages"; import { pageMeta } from "@/lib/meta";
+export const Route=createFileRoute("/login")({head:()=>pageMeta("Log in","Access your Zeruvo projects, credits, and deliveries."),component:LoginPage});
